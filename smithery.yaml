@@ -1,0 +1,16 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - RESEND_API_KEY
+    properties:
+      RESEND_API_KEY:
+        type: string
+        description: Your Resend API key
+  commandFunction: |
+    (config) => ({
+      command: 'python',
+      args: ['server.py'],
+      env: { RESEND_API_KEY: config.RESEND_API_KEY }
+    })
